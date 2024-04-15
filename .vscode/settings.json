@@ -1,4 +1,8 @@
 {
   "git.ignoreLimitWarning": true,
-  "C_Cpp.errorSquiggles": "disabled"
+  "C_Cpp.errorSquiggles": "disabled",
+  "files.associations": {
+    "stdio.h": "c",
+    "stdlib.h": "c"
+  }
 }

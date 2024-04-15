@@ -191,13 +191,41 @@ int fimFilaDinamica(FilaDinamica *f){
 }
 
 void imprimirFilaDinamica(FilaDinamica *f){
-	printf("Fila[");
+	printf("\nFila = [ ");
 	PtrNoFila aux;
 	for(aux=f->inicio;aux!=NULL;aux=aux->proximo){
 		printf("%d ", aux->chave);
 	}
 	printf("]\n");
 }
+
+void quantidadeAvioes(FilaDinamica *f){
+	printf("\nAgora ha %i avioes na fila!", tamanhoFilaDinamica(f));
+}
+
+void autorizaDecolagem(FilaDinamica *f){
+	printf("\nAutorizada a decolagem do aviao: %i.", f->inicio->chave);
+	removerFilaDinamica(f);
+}
+
+void adicionaAviao(FilaDinamica *f, int aviao){
+	printf("\nO aviao '%i' esta, agora, na lista de espera para decolagem.", aviao);
+	inserirFilaDinamica(f, aviao);
+}
+
+void listaAvioes(FilaDinamica *f){
+	if (estaVaziaFilaDinamica(f))
+	{
+		printf("\nPista Livre, fila vazia!");
+	}else{
+		imprimirFilaDinamica(f);		
+	}
+}
+
+void listaCaracteristicas(FilaDinamica *f){
+	printf("\nO primeiro aviao da fila e o '%i'", inicioFilaDinamica(f));
+}
+
 
 int main(){
 	
@@ -232,40 +260,59 @@ int main(){
 	
   */
 
+
+ 	/*
+	Exercício 3:
+
   printf("Escreva ai meu jovem...\n");
   char string[100];
   scanf("%s", string);
-  printf("%s", string);
-	PilhaDinamicaStr *pilhastr;
+	PilhaDinamicaStr *pilhastr = malloc(sizeof(PilhaDinamicaStr));
 	iniciaPilhaDinamicaStr(pilhastr);
   
   for (int i = 0; string[i] != '\0'; i++)
   {
     inserirPilhaDinamicaStr(pilhastr, string[i]);
   }
-	int contador = 0;
+  
 	int verificador = 1;
-
-	
-	printf("%i", pilhastr->qtde);
+	int contador = 0;
 
 	while (pilhastr->qtde != 0)
 	{
-		// if (string[contador] != pilhastr->topo->letra){
-		// 	verificador = 0;
-		// }
-		
+    if (string[contador] != pilhastr->topo->letra)
+    {
+      verificador = 0;
+    }
+    
 		string[contador] = pilhastr->topo->letra;	
 		removerPilhaDinamicaStr(pilhastr);
 		contador++;
 	}
-	printf("\nReverso: %s", string);
+	printf("\nReverso: %s\n\n", string);
 	if (verificador == 1)
 	{
-		printf("S");
+		printf("E um palindromo! :D");
 	}else if (verificador == 0)
 	{
-		printf("N");
+		printf("Nao e um palindromo :c");
 	}
+*/
+
+	FilaDinamica *filaAvioes = malloc(sizeof(FilaDinamica));
+	iniciaFilaDinamica(filaAvioes);
+
+	adicionaAviao(filaAvioes, 1);
+	adicionaAviao(filaAvioes, 2);
+	adicionaAviao(filaAvioes, 3);
+	adicionaAviao(filaAvioes, 4);
+
+	listaAvioes(filaAvioes);
+
+	autorizaDecolagem(filaAvioes);
+
+	listaCaracteristicas(filaAvioes);
+
+	quantidadeAvioes(filaAvioes);
 	return 0;
 }
