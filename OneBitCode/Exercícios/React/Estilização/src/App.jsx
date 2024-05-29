@@ -8,8 +8,6 @@ function sum(a, b) {
 }
 
 export default function App() {
-  const status = true;
-
   return (
     //estilização mais recomendada pois separa estilização em arquivo diferente e possibilita usar o css de uma forma mais completa com animações e estilização para diferentes tamanho de tela.
     <div className={styles.app}>
